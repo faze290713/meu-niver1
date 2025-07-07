@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contagem de 22 Dias 🎉</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+      color: #fff;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin: 10px 0 0;
+      text-shadow: 0 0 10px #fff;
+    }
+
+    .frase {
+      font-size: 1.2em;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .countdown {
+      font-size: 2em;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #fff;
+      margin-bottom: 20px;
+    }
+
+    .calendar {
+      background: white;
+      color: #333;
+      padding: 20px;
+      border-radius: 15px;
+      width: 280px;
+      margin: 20px auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .calendar h2 {
+      margin: 0 0 10px;
+      color: #a18cd1;
+    }
+
+    .calendar table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .calendar th,
+    .calendar td {
+      width: 14.2%;
+      padding: 5px;
+      text-align: center;
+    }
+
+    .calendar td.special {
+      background: #fbc2eb;
+      color: white;
+      font-weight: bold;
+      border-radius: 50%;
+    }
+
+    .stickers {
+      margin-top: 30px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .stickers img {
+      width: 80px;
+      height: auto;
+    }
+
+    audio {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Faltam só 22 dias 🎂</h1>
+  <div class="frase">Espero que você seja feliz e que realize seus sonhos 💜</div>
+  <div class="countdown" id="countdown">Carregando...</div>
+
+  <div class="calendar">
+    <h2>Julho 2025</h2>
+    <table>
+      <tr>
+        <th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th>
+      </tr>
+      <tr>
+        <td> </td><td> </td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+      </tr>
+      <tr>
+        <td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td>
+      </tr>
+      <tr>
+        <td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td>
+      </tr>
+      <tr>
+        <td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td>
+      </tr>
+      <tr>
+        <td>27</td><td>28</td><td class="special">29</td><td>30</td><td>31</td><td> </td><td> </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="stickers">
+    <img src="https://cdn-icons-png.flaticon.com/512/3468/3468375.png" alt="Bolo fofo" />
+    <img src="https://cdn-icons-png.flaticon.com/512/1148/1148293.png" alt="Confete" />
+    <img src="https://cdn-icons-png.flaticon.com/512/4729/4729928.png" alt="Balões" />
+    <img src="https://cdn-icons-png.flaticon.com/512/4315/4315445.png" alt="Coração" />
+  </div>
+
+  <audio controls autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2023/03/31/audio_5ffbacf780.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <script>
+    const targetDate = new Date("2025-07-29T00:00:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("countdown").textContent = "🎉 É HOJE! Feliz Niver! 🎉";
+        clearInterval(timer);
+        return;
+      }
+
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / (1000 * 60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("countdown").textContent = `${d}d ${h}h ${m}m ${s}s`;
+    }
+
+    updateCountdown();
+    const timer = setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
